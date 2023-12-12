@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import openpyxl
+from openpyxl import load_workbook
 
 # Function to clean and preprocess the data
 def preprocess_data(df):
