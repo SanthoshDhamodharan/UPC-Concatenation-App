@@ -1,6 +1,13 @@
 import pandas as pd
 import streamlit as st
+print("Before import")
 from openpyxl import load_workbook
+print("After import")
+
+try:
+    from openpyxl import load_workbook
+except Exception as e:
+    print(f"Error during import: {e}")
 
 # Function to clean and preprocess the data
 def preprocess_data(df):
