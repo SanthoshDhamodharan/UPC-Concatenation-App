@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import openpyxl
+import openpyxl==3.0.17
 
 # Function to clean and preprocess the data
 def preprocess_data(df):
