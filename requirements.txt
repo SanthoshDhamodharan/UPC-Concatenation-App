@@ -1,4 +1,3 @@
 pandas
 streamlit
-os
-io
+openpyxl
