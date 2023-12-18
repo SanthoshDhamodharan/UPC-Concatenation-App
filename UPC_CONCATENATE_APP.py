@@ -38,7 +38,7 @@ UPC_Code = st.text_input("Enter the column name in which UPC code present:")
 
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
-file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", "processed_data")
+file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):")
 
 # Button to start processing
 if st.button("Process Data"):
