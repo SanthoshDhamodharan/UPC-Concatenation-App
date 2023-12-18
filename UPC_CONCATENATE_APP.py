@@ -33,7 +33,7 @@ st.title('UPC Concatenation App')
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
 
 # User input for column names
-Title = st.text_input("Enter the column name in which tile is present:")
+Title = st.text_input("Enter the column name in which title is present:")
 UPC_Code = st.text_input("Enter the column name in which UPC code present:")
 
 # Placeholder for user-specified file name
