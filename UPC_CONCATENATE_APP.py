@@ -33,8 +33,8 @@ st.title('UPC Concatenation App')
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
 
 # User input for column names
-offer_id_column = st.text_input("Enter the column name for 'offer_id2':", "offer_id2")
-barcode_column = st.text_input("Enter the column name for '_14_char_barcode':", "_14_char_barcode")
+offer_id_column = st.text_input("Enter the column name for 'offer_id2':")
+barcode_column = st.text_input("Enter the column name for '_14_char_barcode':")
 
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
