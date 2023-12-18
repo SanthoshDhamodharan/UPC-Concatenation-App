@@ -8,6 +8,7 @@ import os
 import pandas as pd
 import streamlit as st
 import io
+import base64
 import tempfile
 
 # Function to clean and preprocess the data
@@ -26,7 +27,7 @@ uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
 
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
-file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):")
+file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", "processed_data")
 
 # Button to start processing
 if st.button("Process Data"):
@@ -55,7 +56,7 @@ if st.button("Process Data"):
                 st.write(f"File '{file_name.strip()}.xlsx' has been created.")
 
                 # Provide a download link
-                st.markdown(get_binary_file_downloader_html(temp_file_path, f"Download {file_name.strip()}.xlsx"), unsafe_allow_html=True)
+                st.markdown(get_binary_file_downloader_html(temp_file_path, f"{file_name.strip()}.xlsx"), unsafe_allow_html=True)
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 
