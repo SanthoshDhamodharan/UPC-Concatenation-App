@@ -12,11 +12,11 @@ import base64
 import tempfile
 
 # Function to clean and preprocess the data
-def preprocess_data(df, offer_id_column, barcode_column):
-    df[offer_id_column] = df[offer_id_column].str.strip()
-    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
+def preprocess_data(df, Title, UPC_Code):
+    df[Title] = df[Title].str.strip()
+    df[UPC_Code] = df[UPC_Code].apply(lambda x: '{:.0f}'.format(x).zfill(14))
     df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
-    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
+    new_df = df_unique.groupby(Title)[UPC_Code].apply(lambda x: ','.join(x)).reset_index()
     return new_df
 
 # Function to create a download link for a file
@@ -33,8 +33,8 @@ st.title('UPC Concatenation App')
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
 
 # User input for column names
-offer_id_column = st.text_input("Enter the column name for 'offer_id2':", "offer_id2")
-barcode_column = st.text_input("Enter the column name for '_14_char_barcode':", "_14_char_barcode")
+Title = st.text_input("Enter the column name in which tile is present:")
+UPC_Code = st.text_input("Enter the column name in which UPC code present:")
 
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
