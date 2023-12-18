@@ -8,6 +8,7 @@ import os
 import pandas as pd
 import streamlit as st
 import io
+import tempfile
 
 # Function to clean and preprocess the data
 def preprocess_data(df):
@@ -44,16 +45,17 @@ if st.button("Process Data"):
             excel_data = io.BytesIO()
             new_df.to_excel(excel_data, index=False, engine='openpyxl')
 
-            # Save the Excel file to the user's local "Downloads" folder with user-specified or auto-generated file name
-            final_file_name = f"{file_name.strip()}.xlsx"
-            user_downloads_path = os.path.expanduser("~")
-            file_path = os.path.join(user_downloads_path, "Downloads", final_file_name)
-            
-            with open(file_path, "wb") as f:
-                f.write(excel_data.getvalue())
+            # Save the Excel file to a temporary directory
+            with tempfile.TemporaryDirectory() as temp_dir:
+                temp_file_path = os.path.join(temp_dir, f"{file_name.strip()}.xlsx")
+                with open(temp_file_path, "wb") as f:
+                    f.write(excel_data.getvalue())
 
-            # Provide a message to the user
-            st.write(f"File '{final_file_name}' has been downloaded to your local 'Downloads' folder.")
+                # Provide a message to the user
+                st.write(f"File '{file_name.strip()}.xlsx' has been created.")
+
+                # Provide a download link
+                st.markdown(f"### Download your file [here]({temp_file_path})")
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 
