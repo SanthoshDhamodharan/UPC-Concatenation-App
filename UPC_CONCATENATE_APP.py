@@ -26,7 +26,7 @@ uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
 
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
-file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):")
+file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", "processed_data")
 
 # Button to start processing
 if st.button("Process Data"):
@@ -55,9 +55,17 @@ if st.button("Process Data"):
                 st.write(f"File '{file_name.strip()}.xlsx' has been created.")
 
                 # Provide a download link
-                st.markdown(f"### Download your file [here]({temp_file_path})")
+                st.markdown(get_binary_file_downloader_html(temp_file_path, f"Download {file_name.strip()}.xlsx"), unsafe_allow_html=True)
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
+
+
+# Function to create a download link for a file
+def get_binary_file_downloader_html(file_path, file_label):
+    with open(file_path, "rb") as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+    return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_label}">Click here to download {file_label}</a>'
 
 
 # In[ ]:
