@@ -4,9 +4,9 @@
 # In[1]:
 
 
+import os
 import pandas as pd
 import streamlit as st
-import os
 import io
 
 # Function to clean and preprocess the data
@@ -46,13 +46,11 @@ if st.button("Process Data"):
 
             # Save the Excel file to the user's local "Downloads" folder with user-specified or auto-generated file name
             final_file_name = f"{file_name.strip()}.xlsx"
-            user_downloads_path = os.path.expanduser("~\Downloads")
-            file_path = os.path.join(user_downloads_path, final_file_name)
+            user_downloads_path = os.path.expanduser("~")
+            file_path = os.path.join(user_downloads_path, "Downloads", final_file_name)
+            
             with open(file_path, "wb") as f:
                 f.write(excel_data.getvalue())
-
-            # Update the placeholder with the final file name
-            file_name_placeholder.text(final_file_name)
 
             # Provide a message to the user
             st.write(f"File '{final_file_name}' has been downloaded to your local 'Downloads' folder.")
