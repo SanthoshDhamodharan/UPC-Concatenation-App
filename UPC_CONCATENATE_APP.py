@@ -12,11 +12,11 @@ import base64
 import tempfile
 
 # Function to clean and preprocess the data
-def preprocess_data(df):
-    df['offer_id2'] = df['offer_id2'].str.strip()
-    df['_14_char_barcode'] = df['_14_char_barcode'].apply(lambda x: '{:.0f}'.format(x).zfill(14))
-    df_unique = df.drop_duplicates(subset=['offer_id2', '_14_char_barcode'])
-    new_df = df_unique.groupby('offer_id2')['_14_char_barcode'].apply(lambda x: ','.join(x)).reset_index()
+def preprocess_data(df, offer_id_column, barcode_column):
+    df[offer_id_column] = df[offer_id_column].str.strip()
+    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
+    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
+    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
     return new_df
 
 # Function to create a download link for a file
@@ -32,9 +32,13 @@ st.title('UPC Concatenation App')
 # File upload section
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
 
+# User input for column names
+offer_id_column = st.text_input("Enter the column name for 'offer_id2':", "offer_id2")
+barcode_column = st.text_input("Enter the column name for '_14_char_barcode':", "_14_char_barcode")
+
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
-file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):")
+file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", "processed_data")
 
 # Button to start processing
 if st.button("Process Data"):
@@ -44,7 +48,7 @@ if st.button("Process Data"):
             df = pd.read_excel(uploaded_file)
 
             # Preprocess the data
-            new_df = preprocess_data(df)
+            new_df = preprocess_data(df, offer_id_column, barcode_column)
 
             # Display processed data
             st.dataframe(new_df)
@@ -66,6 +70,7 @@ if st.button("Process Data"):
                 st.markdown(get_binary_file_downloader_html(temp_file_path, f"{file_name.strip()}.xlsx"), unsafe_allow_html=True)
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
+            
 
 
 # In[ ]:
