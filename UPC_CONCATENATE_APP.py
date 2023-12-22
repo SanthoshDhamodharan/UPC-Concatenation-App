@@ -11,6 +11,11 @@ import io
 import base64
 import tempfile
 
+# Set wider layout
+st.set_page_config(layout="wide")
+
+# Rest of your code...
+
 # Workaround for wide layout
 st.markdown("""
     <style>
@@ -27,6 +32,7 @@ logos = {
     'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
+
 
 # Set the desired height for the logo
 logo_heights = {
