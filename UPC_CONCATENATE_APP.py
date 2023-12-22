@@ -11,9 +11,6 @@ import io
 import base64
 import tempfile
 
-# Logo display section
-st.title('Logos')
-
 # List of logos with their URLs
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
