@@ -41,18 +41,18 @@ logos = {
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
-# Set the desired height for the 'Albertsons Market' logo
+# Set the desired height for the logo
 logo_heights = {
-    'United Supermarkets': 200,
-    'MarketStreet': 200,
-    'Albertsons Market': 100,  # Adjust the height as needed
-    'Amigos': 200,
+    'United Supermarkets': 160,
+    'MarketStreet': 160,
+    'Albertsons Market': 160,
+    'Amigos': 160,
 }
 
 # Display logos side by side horizontally
 logo_html = ""
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 200)  # Default height is set to 200 if not specified
+    height = logo_heights.get(logo, 500)  # Default height is set to 200 if not specified
     logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
 
 # Render logos using HTML
@@ -61,9 +61,14 @@ st.markdown(logo_html, unsafe_allow_html=True)
 # Streamlit app
 st.title('UPC Concatenation App')
 
-# File upload section with custom-styled "Browse File" button
-if st.button("Upload Excel File", key="custombutton", help="Upload Excel File", style={"background-color": "#4CAF50", "color": "white", "border-radius": "5px"}):
-    uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Displayed custom uploader
+# Custom-styled file uploader button
+button_html = """
+<button class="custom-file-upload" onclick="document.getElementById('fileuploader').click();">Upload Excel File</button>
+"""
+st.markdown(button_html, unsafe_allow_html=True)
+
+# File upload section with hidden default uploader
+uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
