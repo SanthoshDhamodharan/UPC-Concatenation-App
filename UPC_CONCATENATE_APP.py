@@ -73,7 +73,7 @@ button_html = """
 st.markdown(button_html, unsafe_allow_html=True)
 
 # File upload section with hidden default uploader and styled button
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", help="Upload Excel File", class="green-file-uploader")  # Displayed custom uploader
+uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", help="Upload Excel File", style="background-color: #4CAF50; color: white; border-radius: 5px;", accept_multiple_files=False)  # Displayed custom uploader
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
