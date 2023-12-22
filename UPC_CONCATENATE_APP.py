@@ -22,8 +22,16 @@ logos = {
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
+# Set the desired height for the 'Albertsons Market' logo
+logo_heights = {
+    'United Supermarkets': 200,
+    'MarketStreet': 200,
+    'Albertsons Market': 100,  # Adjust the height as needed
+    'Amigos': 200,
+}
+
 # Display logos side by side horizontally
-st.image([logo_url for _, logo_url in logos.items()], width=420, use_column_width=False)
+st.image([logo_url for _, logo_url in logos.items()], width=200, use_column_width=False, caption=list(logo_heights.keys()), height=[logo_heights[logo] for logo in logos.keys()])
 
 # Streamlit app
 st.title('UPC Concatenation App')
