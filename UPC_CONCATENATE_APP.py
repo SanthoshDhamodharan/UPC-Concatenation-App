@@ -24,8 +24,9 @@ with st.container():
     }
 
     # Display logos side by side
-    for logo_name, logo_url in logos.items():
-        st.image(logo_url, caption=logo_name, use_column_width=True)
+    logo_columns = st.beta_columns(len(logos))
+    for col, (logo_name, logo_url) in zip(logo_columns, logos.items()):
+        col.image(logo_url, caption=logo_name, use_column_width=True)
 
 # Streamlit app
 st.title('UPC Concatenation App')
