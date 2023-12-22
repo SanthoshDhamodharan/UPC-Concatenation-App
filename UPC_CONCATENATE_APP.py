@@ -11,6 +11,9 @@ import io
 import base64
 import tempfile
 
+# Set the page to wide layout
+st.set_page_config(layout="wide")
+
 # List of logos with their URLs
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
