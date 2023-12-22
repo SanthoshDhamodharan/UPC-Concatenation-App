@@ -38,21 +38,21 @@ logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
     'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
     'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
-    ' Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
+    'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
-# Set the desired height for the logo
+# Set the desired height for the 'Albertsons Market' logo
 logo_heights = {
-    'United Supermarkets': 160,
-    'MarketStreet': 160,
-    'Albertsons Market': 160,
-    ' Amigos': 160,
+    'United Supermarkets': 200,
+    'MarketStreet': 200,
+    'Albertsons Market': 100,  # Adjust the height as needed
+    'Amigos': 200,
 }
 
 # Display logos side by side horizontally
 logo_html = ""
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 500)  # Default height is set to 200 if not specified
+    height = logo_heights.get(logo, 200)  # Default height is set to 200 if not specified
     logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
 
 # Render logos using HTML
@@ -62,7 +62,7 @@ st.markdown(logo_html, unsafe_allow_html=True)
 st.title('UPC Concatenation App')
 
 # File upload section with custom-styled "Browse File" button
-if st.button("Upload Excel File", class="custom-file-upload"):
+if st.button("Upload Excel File", key="custombutton", help="Upload Excel File", style={"background-color": "#4CAF50", "color": "white", "border-radius": "5px"}):
     uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Displayed custom uploader
 
 # User input for column names
