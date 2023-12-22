@@ -40,11 +40,11 @@ logos = {
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
-# Set the desired height for the 'Albertsons Market' logo
+# Set the desired height for the logo
 logo_heights = {
     'United Supermarkets': 160,
     'MarketStreet': 160,
-    'Albertsons Market': 160,  # Adjust the height as needed
+    'Albertsons Market': 160,
     'Amigos': 160,
 }
 
@@ -64,7 +64,7 @@ st.title('UPC Concatenation App')
 uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Hidden default uploader
 
 # Custom-styled file uploader button
-if st.button("Upload Excel File", class="custom-file-upload"):
+if st.button("Upload Excel File", key="custombutton", help="Upload Excel File", style={"background-color": "#4CAF50", "color": "white", "border-radius": "5px"}):
     uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Displayed custom uploader
 
 # User input for column names
