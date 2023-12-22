@@ -12,19 +12,20 @@ import base64
 import tempfile
 
 # Logo display section
-st.title('Logos')
+with st.beta_container():
+    st.title('Logos')
 
-# List of logos with their URLs
-logos = {
-    'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
-    'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
-    'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
-    'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
-}
+    # List of logos with their URLs
+    logos = {
+        'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
+        'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
+        'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
+        'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
+    }
 
-# Display logos
-for logo_name, logo_url in logos.items():
-    st.image(logo_url, caption=logo_name, use_column_width=True)
+    # Display logos side by side
+    for logo_name, logo_url in logos.items():
+        st.image(logo_url, caption=logo_name, use_column_width=True)
 
 # Streamlit app
 st.title('UPC Concatenation App')
