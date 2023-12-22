@@ -24,10 +24,10 @@ logos = {
 
 # Set the desired height for the 'Albertsons Market' logo
 logo_heights = {
-    'United Supermarkets': 100,
-    'MarketStreet': 100,
-    'Albertsons Market': 100,  # Adjust the height as needed
-    'Amigos': 100,
+    'United Supermarkets': 150,
+    'MarketStreet': 150,
+    'Albertsons Market': 150,  # Adjust the height as needed
+    'Amigos': 150,
 }
 
 # Display logos side by side horizontally
