@@ -33,7 +33,7 @@ logo_heights = {
 # Display logos side by side horizontally
 logo_html = ""
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 300)  # Default height is set to 200 if not specified
+    height = logo_heights.get(logo, 500)  # Default height is set to 200 if not specified
     logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
 
 # Render logos using HTML
