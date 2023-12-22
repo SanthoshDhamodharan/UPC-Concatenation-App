@@ -20,10 +20,7 @@ logos = {
 }
 
 # Display logos side by side horizontally
-with st.container():
-    logo_row = st.empty()
-    for _, logo_url in logos.items():
-        logo_row.image(logo_url, width=100, use_column_width=False)
+st.image([logo_url for _, logo_url in logos.items()], width=100, use_column_width=False)
 
 # Streamlit app
 st.title('UPC Concatenation App')
