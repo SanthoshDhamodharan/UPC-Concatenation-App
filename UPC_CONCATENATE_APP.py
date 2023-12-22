@@ -31,7 +31,13 @@ logo_heights = {
 }
 
 # Display logos side by side horizontally
-st.image([logo_url for _, logo_url in logos.items()], width=200, use_column_width=False, caption=list(logo_heights.keys()), height=[logo_heights[logo] for logo in logos.keys()])
+logo_html = ""
+for logo, url in logos.items():
+    height = logo_heights.get(logo, 200)  # Default height is set to 200 if not specified
+    logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
+
+# Render logos using HTML
+st.markdown(logo_html, unsafe_allow_html=True)
 
 # Streamlit app
 st.title('UPC Concatenation App')
