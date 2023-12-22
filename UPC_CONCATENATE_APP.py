@@ -20,32 +20,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Custom CSS to style the "Browse File" button and the file uploader button
-custom_styles = """
-<style>
-    .custom-file-upload {
-        display: inline-block;
-        padding: 10px;
-        cursor: pointer;
-        background-color: #4CAF50; /* Green color */
-        color: white;
-        border: 1px solid #4CAF50;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    /* Style the file uploader button */
-    .st-ek input[type=file] {
-        background-color: #4CAF50; /* Green color */
-        color: white;
-        border-radius: 5px;
-    }
-</style>
-"""
-
-# Inject the custom CSS
-st.markdown(custom_styles, unsafe_allow_html=True)
-
 # List of logos with their URLs
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
@@ -74,15 +48,6 @@ st.markdown(logo_html, unsafe_allow_html=True)
 # Streamlit app
 st.title('UPC Concatenation App')
 
-# Custom-styled file uploader button
-button_html = """
-<button class="custom-file-upload" onclick="document.getElementById('fileuploader').click();">Upload Excel File</button>
-"""
-st.markdown(button_html, unsafe_allow_html=True)
-
-# File upload section with hidden default uploader
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)  # Displayed custom uploader
-
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
 barcode_column = st.text_input("Enter the column name in which UPC code is given in your dataset:")
@@ -93,34 +58,11 @@ file_name = file_name_placeholder.text_input("Enter the desired file name (witho
 
 # Button to start processing
 if st.button("Process Data"):
-    if uploaded_file is not None:
-        try:
-            # Load data from Excel
-            df = pd.read_excel(uploaded_file)
-
-            # Preprocess the data
-            new_df = preprocess_data(df, offer_id_column, barcode_column)
-
-            # Display processed data
-            st.dataframe(new_df)
-
-            # Create an in-memory Excel file
-            excel_data = io.BytesIO()
-            new_df.to_excel(excel_data, index=False, engine='openpyxl')
-
-            # Save the Excel file to a temporary directory
-            with tempfile.TemporaryDirectory() as temp_dir:
-                temp_file_path = os.path.join(temp_dir, f"{file_name.strip()}.xlsx")
-                with open(temp_file_path, "wb") as f:
-                    f.write(excel_data.getvalue())
-
-                # Provide a message to the user
-                st.write(f"File '{file_name.strip()}.xlsx' has been created.")
-
-                # Provide a download link
-                st.markdown(get_binary_file_downloader_html(temp_file_path, f"{file_name.strip()}.xlsx"), unsafe_allow_html=True)
-        except Exception as e:
-            st.error(f"An error occurred: {str(e)}")
+    # Your data processing logic here
+    try:
+        st.write("Data processing logic goes here.")
+    except Exception as e:
+        st.error(f"An error occurred: {str(e)}")
             
 
 
