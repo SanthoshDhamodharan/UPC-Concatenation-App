@@ -22,12 +22,12 @@ logos = {
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
-# Set the desired height for the 'Albertsons Market' logo
+# Set the desired height for logos
 logo_heights = {
-    'United Supermarkets': 150,
-    'MarketStreet': 150,
-    'Albertsons Market': 150,  # Adjust the height as needed
-    'Amigos': 150,
+    'United Supermarkets': 165,
+    'MarketStreet': 165,
+    'Albertsons Market': 165,
+    'Amigos': 165,
 }
 
 # Display logos side by side horizontally
