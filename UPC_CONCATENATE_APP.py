@@ -17,10 +17,13 @@ st.set_page_config(layout="wide")
 # Custom CSS to style the "Browse File" button
 button_style = """
 <style>
-    div.stFileUploader div div div {
-        background-color: #4CAF50;  /* Green color */
-        color: white;
+    .custom-file-upload {
+        display: inline-block;
         padding: 10px;
+        cursor: pointer;
+        background-color: #4CAF50; /* Green color */
+        color: white;
+        border: 1px solid #4CAF50;
         border-radius: 5px;
     }
 </style>
@@ -39,16 +42,16 @@ logos = {
 
 # Set the desired height for the 'Albertsons Market' logo
 logo_heights = {
-    'United Supermarkets': 200,
-    'MarketStreet': 200,
-    'Albertsons Market': 100,  # Adjust the height as needed
-    'Amigos': 200,
+    'United Supermarkets': 160,
+    'MarketStreet': 160,
+    'Albertsons Market': 160,  # Adjust the height as needed
+    'Amigos': 160,
 }
 
 # Display logos side by side horizontally
 logo_html = ""
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 200)  # Default height is set to 200 if not specified
+    height = logo_heights.get(logo, 500)  # Default height is set to 200 if not specified
     logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
 
 # Render logos using HTML
@@ -57,8 +60,12 @@ st.markdown(logo_html, unsafe_allow_html=True)
 # Streamlit app
 st.title('UPC Concatenation App')
 
-# File upload section with styled "Browse File" button
-uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"])
+# File upload section with custom-styled "Browse File" button
+uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Hidden default uploader
+
+# Custom-styled file uploader button
+if st.button("Upload Excel File", class="custom-file-upload"):
+    uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Displayed custom uploader
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
