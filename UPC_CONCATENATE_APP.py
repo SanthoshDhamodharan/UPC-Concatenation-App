@@ -16,10 +16,10 @@ st.title('Logos')
 
 # List of logos with their URLs
 logos = {
-    'United Supermarkets': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/United_Supermarkets_Logo.png',
-    'MarketStreet': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/MarketStreet_Logo.png',
-    'Albertsons Market': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/Albertsons%20Market_Logo.png',
-    'Amigos': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/Amigos_Logo.png',
+    'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/United_Supermarkets_Logo.png',
+    'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/MarketStreet_Logo.png',
+    'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/Albertsons%20Market_Logo.png',
+    'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/Amigos_Logo.png',
 }
 
 # Display logos
