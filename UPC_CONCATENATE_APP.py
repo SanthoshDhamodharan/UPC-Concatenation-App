@@ -12,7 +12,7 @@ import base64
 import tempfile
 
 # Logo display section
-with st.beta_container():
+with st.container():
     st.title('Logos')
 
     # List of logos with their URLs
