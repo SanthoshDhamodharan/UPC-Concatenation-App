@@ -14,8 +14,8 @@ import tempfile
 # Set the page to wide layout
 st.set_page_config(layout="wide")
 
-# Custom CSS to style the "Browse File" button
-button_style = """
+# Custom CSS to style the "Browse File" button and the file uploader button
+custom_styles = """
 <style>
     .custom-file-upload {
         display: inline-block;
@@ -27,11 +27,16 @@ button_style = """
         border-radius: 5px;
         text-align: center;
     }
+
+    .green-file-uploader input[type=file] {
+        background-color: #4CAF50; /* Green color */
+        color: white;
+    }
 </style>
 """
 
 # Inject the custom CSS
-st.markdown(button_style, unsafe_allow_html=True)
+st.markdown(custom_styles, unsafe_allow_html=True)
 
 # List of logos with their URLs
 logos = {
@@ -67,8 +72,8 @@ button_html = """
 """
 st.markdown(button_html, unsafe_allow_html=True)
 
-# File upload section with hidden default uploader
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")
+# File upload section with hidden default uploader and styled button
+uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", help="Upload Excel File", class="green-file-uploader")  # Displayed custom uploader
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
