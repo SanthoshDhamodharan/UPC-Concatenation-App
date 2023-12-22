@@ -19,10 +19,11 @@ logos = {
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
-# Display logos side by side
+# Display logos side by side horizontally
 with st.container():
+    logo_row = st.empty()
     for _, logo_url in logos.items():
-        st.image(logo_url, use_column_width=True)
+        logo_row.image(logo_url, width=100)  # Adjust the width as needed
 
 # Streamlit app
 st.title('UPC Concatenation App')
