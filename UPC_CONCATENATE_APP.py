@@ -11,20 +11,20 @@ import io
 import base64
 import tempfile
 
-# Function to clean and preprocess the data
-def preprocess_data(df, offer_id_column, barcode_column):
-    df[offer_id_column] = df[offer_id_column].str.strip()
-    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
-    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
-    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
-    return new_df
+# Logo display section
+st.title('Logos')
 
-# Function to create a download link for a file
-def get_binary_file_downloader_html(file_path, file_label):
-    with open(file_path, "rb") as f:
-        data = f.read()
-    b64 = base64.b64encode(data).decode()
-    return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_label}">Click here to download {file_label}</a>'
+# List of logos with their URLs
+logos = {
+    'United Supermarkets': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/United_Supermarkets_Logo.png',
+    'MarketStreet': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/MarketStreet_Logo.png',
+    'Albertsons Market': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/Albertsons%20Market_Logo.png',
+    'Amigos': 'https://github.com/SanthoshDhamodharan/UPC-Concatenation-App/blob/main/Amigos_Logo.png',
+}
+
+# Display logos
+for logo_name, logo_url in logos.items():
+    st.image(logo_url, caption=logo_name, use_column_width=True)
 
 # Streamlit app
 st.title('UPC Concatenation App')
