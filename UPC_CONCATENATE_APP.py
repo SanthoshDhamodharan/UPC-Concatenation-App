@@ -25,6 +25,7 @@ button_style = """
         color: white;
         border: 1px solid #4CAF50;
         border-radius: 5px;
+        text-align: center;
     }
 </style>
 """
@@ -37,7 +38,7 @@ logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
     'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
     'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
-    'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
+    ' Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
 # Set the desired height for the logo
@@ -45,7 +46,7 @@ logo_heights = {
     'United Supermarkets': 160,
     'MarketStreet': 160,
     'Albertsons Market': 160,
-    'Amigos': 160,
+    ' Amigos': 160,
 }
 
 # Display logos side by side horizontally
@@ -61,10 +62,7 @@ st.markdown(logo_html, unsafe_allow_html=True)
 st.title('UPC Concatenation App')
 
 # File upload section with custom-styled "Browse File" button
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Hidden default uploader
-
-# Custom-styled file uploader button
-if st.button("Upload Excel File", key="custombutton", help="Upload Excel File", style={"background-color": "#4CAF50", "color": "white", "border-radius": "5px"}):
+if st.button("Upload Excel File", class="custom-file-upload"):
     uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader")  # Displayed custom uploader
 
 # User input for column names
