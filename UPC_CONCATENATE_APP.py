@@ -48,8 +48,6 @@ st.markdown(logo_html, unsafe_allow_html=True)
 # Streamlit app
 st.title('UPC Concatenation App')
 
-st.markdown(button_html, unsafe_allow_html=True)
-
 # File upload section with hidden default uploader
 uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)  # Displayed custom uploader
 
