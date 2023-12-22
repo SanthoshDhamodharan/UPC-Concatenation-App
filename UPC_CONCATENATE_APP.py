@@ -4,13 +4,6 @@
 # In[1]:
 
 
-import os
-import pandas as pd
-import streamlit as st
-import io
-import base64
-import tempfile
-
 # Set the page to wide layout
 st.set_page_config(layout="wide")
 
@@ -28,9 +21,11 @@ custom_styles = """
         text-align: center;
     }
 
-    .green-file-uploader input[type=file] {
+    /* Style the file uploader button */
+    .st-ek input[type=file] {
         background-color: #4CAF50; /* Green color */
         color: white;
+        border-radius: 5px;
     }
 </style>
 """
@@ -57,7 +52,7 @@ logo_heights = {
 # Display logos side by side horizontally
 logo_html = ""
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 500)  # Default height is set to 200 if not specified
+    height = logo_heights.get(logo, 200)  # Default height is set to 200 if not specified
     logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
 
 # Render logos using HTML
@@ -72,8 +67,8 @@ button_html = """
 """
 st.markdown(button_html, unsafe_allow_html=True)
 
-# File upload section with hidden default uploader and styled button
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", help="Upload Excel File", style="background-color: #4CAF50; color: white; border-radius: 5px;", accept_multiple_files=False)  # Displayed custom uploader
+# File upload section with hidden default uploader
+uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)  # Displayed custom uploader
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
