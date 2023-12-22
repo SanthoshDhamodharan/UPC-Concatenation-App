@@ -23,7 +23,7 @@ logos = {
 with st.container():
     logo_row = st.empty()
     for _, logo_url in logos.items():
-        logo_row.image(logo_url, width=100)  # Adjust the width as needed
+        logo_row.image(logo_url, width=100, use_column_width=False)
 
 # Streamlit app
 st.title('UPC Concatenation App')
