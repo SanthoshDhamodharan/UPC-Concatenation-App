@@ -48,10 +48,6 @@ st.markdown(logo_html, unsafe_allow_html=True)
 # Streamlit app
 st.title('UPC Concatenation App')
 
-# Custom-styled file uploader button
-button_html = """
-<button class="custom-file-upload" onclick="document.getElementById('fileuploader').click();">Upload Excel File</button>
-"""
 st.markdown(button_html, unsafe_allow_html=True)
 
 # File upload section with hidden default uploader
