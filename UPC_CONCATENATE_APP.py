@@ -23,7 +23,7 @@ logos = {
 }
 
 # Display logos side by side horizontally
-st.image([logo_url for _, logo_url in logos.items()], width=400, use_column_width=False)
+st.image([logo_url for _, logo_url in logos.items()], width=500, use_column_width=False)
 
 # Streamlit app
 st.title('UPC Concatenation App')
