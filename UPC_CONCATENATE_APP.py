@@ -36,16 +36,16 @@ logos = {
 
 # Set the desired height for the logo
 logo_heights = {
-    'United Supermarkets': 160,
-    'MarketStreet': 160,
-    'Albertsons Market': 160,
-    'Amigos': 160,
+    'United Supermarkets': 130,
+    'MarketStreet': 130,
+    'Albertsons Market': 130,
+    'Amigos': 130,
 }
 
 # Display logos side by side horizontally
 logo_html = ""
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 160)  # Default height is set to 200 if not specified
+    height = logo_heights.get(logo, 130)  # Default height is set to 200 if not specified
     logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
 
 # Render logos using HTML
