@@ -21,12 +21,15 @@ st.markdown("""
             width: 100%;
         }
         .logo-container {
-            white-space: nowrap; /* Prevent logos from wrapping to the second line */
+            display: flex;
+            justify-content: space-evenly; /* Distribute space evenly between logos */
+            align-items: center; /* Center logos vertically */
+            margin: 0 -10px; /* Ensure equal margins on both sides */
         }
         .logo-container img {
             max-width: 100%;
             height: auto;
-            margin-right: 10px;
+            margin: 0 10px; /* Adjust margin on both sides */
         }
     </style>
 """, unsafe_allow_html=True)
