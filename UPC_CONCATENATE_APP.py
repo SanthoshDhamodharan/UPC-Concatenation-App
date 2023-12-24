@@ -82,7 +82,7 @@ file_name_placeholder = st.empty()
 file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
 # Button to start processing
-if st.button("Process Data"):
+if st.button("Click to Process Data"):
     if uploaded_file is not None:
         try:
             # Load data from Excel
