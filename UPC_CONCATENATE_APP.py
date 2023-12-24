@@ -52,6 +52,21 @@ logo_html += '</div>'
 # Render logos using HTML
 st.markdown(logo_html, unsafe_allow_html=True)
 
+# Function to clean and preprocess the data
+def preprocess_data(df, offer_id_column, barcode_column):
+    df[offer_id_column] = df[offer_id_column].str.strip()
+    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
+    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
+    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
+    return new_df
+
+# Function to create a download link for a file
+def get_binary_file_downloader_html(file_path, file_label):
+    with open(file_path, "rb") as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+    return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_label}">Click here to download {file_label}</a>'
+
 # Streamlit app
 st.title('UPC Concatenation App')
 
