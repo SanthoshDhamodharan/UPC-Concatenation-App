@@ -25,10 +25,11 @@ st.markdown("""
             justify-content: space-evenly; /* Distribute space evenly between logos */
             align-items: center; /* Center logos vertically */
             margin: 0 -10px; /* Ensure equal margins on both sides */
+            height: 100px; /* Set a fixed height for the logo container */
         }
         .logo-container img {
-            max-width: 100%;
-            height: auto;
+            max-height: 100%; /* Set the maximum height of the logo */
+            width: auto; /* Allow the width to adjust accordingly */
             margin: 0 10px; /* Adjust margin on both sides */
         }
     </style>
