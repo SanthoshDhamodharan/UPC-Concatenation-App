@@ -20,9 +20,12 @@ st.markdown("""
         .reportview-container {
             width: 100%;
         }
+        .logo-container {
+            white-space: nowrap; /* Prevent logos from wrapping to the second line */
+        }
         .logo-container img {
-            max-width: 100%;  /* Ensure logos fit the screen size */
-            height: auto;     /* Maintain aspect ratio */
+            max-width: 100%;
+            height: auto;
             margin-right: 10px;
         }
     </style>
