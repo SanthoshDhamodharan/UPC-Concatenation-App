@@ -56,10 +56,7 @@ st.markdown(logo_html, unsafe_allow_html=True)
 def preprocess_data(df, offer_id_column, barcode_column):
     df[offer_id_column] = df[offer_id_column].str.strip()
     df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
-    
-    # Replace NaN values with empty string when joining UPC codes
-    df_unique = df.fillna({barcode_column: ''}).drop_duplicates(subset=[offer_id_column, barcode_column])
-    
+    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
     new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
     return new_df
 
@@ -82,7 +79,7 @@ barcode_column = st.text_input("Enter the column name in which UPC code is given
 
 # Placeholder for user-specified file name
 file_name_placeholder = st.empty()
-file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", key="file_name_input"
+file_name = file_name_placeholder.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
 # Button to start processing
 if st.button("Process Data"):
