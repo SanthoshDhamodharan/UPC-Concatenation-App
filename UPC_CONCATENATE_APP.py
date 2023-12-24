@@ -29,7 +29,8 @@ st.markdown("""
         }
         .logo-container img {
             max-width: 100%; /* Ensure logos fit the screen size */
-            height: auto;
+            max-height: 100%; /* Ensure logos fit the screen size */
+            object-fit: contain; /* Maintain aspect ratio and fit within the container */
             margin: 0 10px; /* Adjust margin on both sides */
         }
     </style>
