@@ -24,10 +24,11 @@ st.markdown("""
             display: flex;
             justify-content: space-evenly; /* Distribute space evenly between logos */
             align-items: center; /* Center logos vertically */
+            overflow: auto; /* Add scroll if logos overflow */
             margin: 0 -10px; /* Ensure equal margins on both sides */
         }
         .logo-container img {
-            max-width: 100%;
+            max-width: 100%; /* Ensure logos fit the screen size */
             height: auto;
             margin: 0 10px; /* Adjust margin on both sides */
         }
