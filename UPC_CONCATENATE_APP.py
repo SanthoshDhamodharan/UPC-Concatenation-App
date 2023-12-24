@@ -14,13 +14,16 @@ import tempfile
 # Set wider layout
 st.set_page_config(layout="wide")
 
-# Rest of your code...
-
 # Workaround for wide layout
 st.markdown("""
     <style>
         .reportview-container {
             width: 100%;
+        }
+        .logo-container img {
+            max-width: 100%;  /* Ensure logos fit the screen size */
+            height: auto;     /* Maintain aspect ratio */
+            margin-right: 10px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -33,20 +36,11 @@ logos = {
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
-
-# Set the desired height for the logo
-logo_heights = {
-    'United Supermarkets': 100,
-    'MarketStreet': 100,
-    'Albertsons Market': 100,
-    'Amigos': 100,
-}
-
 # Display logos side by side horizontally
-logo_html = ""
+logo_html = '<div class="logo-container">'
 for logo, url in logos.items():
-    height = logo_heights.get(logo, 100)  # Default height is set to 200 if not specified
-    logo_html += f'<img src="{url}" alt="{logo}" style="height: {height}px; margin-right: 10px;">'
+    logo_html += f'<img src="{url}" alt="{logo}">'
+logo_html += '</div>'
 
 # Render logos using HTML
 st.markdown(logo_html, unsafe_allow_html=True)
