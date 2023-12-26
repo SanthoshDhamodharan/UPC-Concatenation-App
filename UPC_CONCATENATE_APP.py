@@ -53,7 +53,7 @@ logos = {
 # Display logos side by side horizontally
 logo_html = '<div class="logo-container">'
 for logo, url in logos.items():
-    logo_html += f'<img src="{url}" alt="{logo}">'
+    logo_html += '<img src="{}" alt="{}">'.format(url, logo)
 logo_html += '</div>'
 
 # Render logos using HTML
@@ -75,7 +75,7 @@ def get_binary_file_downloader_html(file_path, file_label):
     with open(file_path, "rb") as f:
         data = f.read()
     b64 = base64.b64encode(data).decode()
-    return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_label}">Click here to download {file_label}</a>'
+    return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
 
 # File upload section with hidden default uploader
 uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)  # Displayed custom uploader
@@ -107,17 +107,17 @@ if st.button("Click to Process Data"):
 
             # Save the Excel file to a temporary directory
             with tempfile.TemporaryDirectory() as temp_dir:
-                temp_file_path = os.path.join(temp_dir, f"{file_name.strip()}.xlsx")
+                temp_file_path = os.path.join(temp_dir, "{}.xlsx".format(file_name.strip()))
                 with open(temp_file_path, "wb") as f:
                     f.write(excel_data.getvalue())
 
                 # Provide a message to the user
-                st.write(f"File '{file_name.strip()}.xlsx' has been created.")
+                st.write("File '{}.xlsx' has been created.".format(file_name.strip()))
 
                 # Provide a download link
-                st.markdown(get_binary_file_downloader_html(temp_file_path, f"{file_name.strip()}.xlsx"), unsafe_allow_html=True)
+                st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name.strip())), unsafe_allow_html=True)
         except Exception as e:
-            st.error(f"An error occurred: {str(e)}")
+            st.error("An error occurred: {}".format(str(e)))
             
 
 
