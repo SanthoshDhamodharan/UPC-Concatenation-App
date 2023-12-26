@@ -52,6 +52,9 @@ st.markdown('<div class="logo-container">'
 # Title for Our Clients
 st.title('Our Clients')
 
+# Placeholder for user-specified file name
+file_name_placeholder = st.empty()
+
 # List of logos with their URLs
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
@@ -68,9 +71,6 @@ logo_html += '</div>'
 
 # Render logos using HTML
 st.markdown(logo_html, unsafe_allow_html=True)
-
-# Placeholder for user-specified file name
-file_name_placeholder = st.empty()
 
 # File upload section with hidden default uploader
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
