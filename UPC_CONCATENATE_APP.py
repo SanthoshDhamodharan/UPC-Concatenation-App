@@ -135,21 +135,15 @@ if st.button("Click to Process Data"):
                 state.download_clicked = False  # Reset the state
 
                 # Workaround to clear text inputs
-                st.text_input("Hidden Text Input (1)", key="hidden_text_input_1", value="", visible=False)
-                st.text_input("Hidden Text Input (2)", key="hidden_text_input_2", value="", visible=False)
-                st.text_input("Hidden Text Input (3)", key="hidden_text_input_3", value="", visible=False)
+                uploaded_file = None
+                offer_id_column = None
+                barcode_column = None
+                file_name_placeholder = None
 
         except Exception as e:
             st.error("An error occurred: {}".format(str(e)))
     else:
         st.warning("Please provide valid input for all fields.")
-
-# Reset the input fields after the download button is clicked
-if state.download_clicked:
-    uploaded_file = None
-    offer_id_column = None
-    barcode_column = None
-    file_name_placeholder = None
             
 
 
