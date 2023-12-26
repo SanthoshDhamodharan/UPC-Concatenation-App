@@ -52,6 +52,9 @@ st.markdown('<div class="logo-container">'
 # Title for Our Clients
 st.title('Our Clients')
 
+# Placeholder for user-specified file name
+file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
+
 # List of logos with their URLs
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
@@ -75,9 +78,6 @@ uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key=
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
 barcode_column = st.text_input("Enter the column name in which UPC code is given in your dataset:")
-
-# Placeholder for user-specified file name
-file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
 # Button to start processing
 if st.button("Click to Process Data"):
@@ -110,6 +110,13 @@ if st.button("Click to Process Data"):
             st.error("An error occurred: {}".format(str(e)))
     else:
         st.warning("Please provide valid input for all fields.")
+
+# Function to create a download link for a file
+def get_binary_file_downloader_html(file_path, file_label):
+    with open(file_path, "rb") as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+    return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
             
 
 
