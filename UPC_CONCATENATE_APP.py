@@ -11,6 +11,23 @@ import io
 import base64
 import tempfile
 
+class SessionState:
+    def __init__(self, **kwargs):
+        self._state = kwargs
+
+    def __getattr__(self, attr):
+        return self._state.get(attr, None)
+
+    def __setattr__(self, attr, value):
+        self._state[attr] = value
+
+# Function to create a download link for a file
+def get_binary_file_downloader_html(file_path, file_label):
+    with open(file_path, "rb") as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+    return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
+
 # Set wider layout
 st.set_page_config(layout="wide")
 
@@ -80,7 +97,10 @@ barcode_column = st.text_input("Enter the column name in which UPC code is given
 file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
 # Button to start processing
+state = SessionState(download_clicked=False)
+
 if st.button("Click to Process Data"):
+    state.download_clicked = True
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
         try:
             # Load data from Excel
@@ -110,13 +130,14 @@ if st.button("Click to Process Data"):
             st.error("An error occurred: {}".format(str(e)))
     else:
         st.warning("Please provide valid input for all fields.")
-
-# Function to create a download link for a file
-def get_binary_file_downloader_html(file_path, file_label):
-    with open(file_path, "rb") as f:
-        data = f.read()
-    b64 = base64.b64encode(data).decode()
-    return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
+else:
+    if state.download_clicked:
+        # Reset the fields after the download button is clicked
+        uploaded_file = None
+        offer_id_column = None
+        barcode_column = None
+        file_name_placeholder = None
+        state.download_clicked = False
             
 
 
