@@ -23,6 +23,14 @@ def get_binary_file_downloader_html(file_path, file_label):
     b64 = base64.b64encode(data).decode()
     return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
 
+# Function to clean and preprocess the data
+def preprocess_data(df, offer_id_column, barcode_column):
+    df[offer_id_column] = df[offer_id_column].str.strip()
+    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
+    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
+    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
+    return new_df
+
 # Set wider layout
 st.set_page_config(layout="wide")
 
@@ -101,14 +109,15 @@ if st.button("Click to Process Data"):
             # Load data from Excel
             df = pd.read_excel(uploaded_file)
 
-            # Your preprocess_data function (not included in this snippet)
+            # Clean and preprocess the data
+            df_processed = preprocess_data(df, offer_id_column, barcode_column)
 
             # Display processed data
-            st.dataframe(df)
+            st.dataframe(df_processed)
 
             # Create an in-memory Excel file
             excel_data = io.BytesIO()
-            df.to_excel(excel_data, index=False, engine='openpyxl')
+            df_processed.to_excel(excel_data, index=False, engine='openpyxl')
 
             # Save the Excel file to a temporary directory
             with tempfile.TemporaryDirectory() as temp_dir:
