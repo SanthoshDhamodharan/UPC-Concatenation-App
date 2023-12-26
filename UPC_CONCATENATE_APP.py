@@ -18,22 +18,32 @@ st.set_page_config(layout="wide")
 st.markdown("""
     <style>
         .reportview-container {
+            display: flex;
+            flex-direction: column; /* Align content in a vertical column */
+            align-items: flex-start; /* Align content to the left */
             width: 100%;
         }
         .logo-container {
             display: flex;
             justify-content: flex-start; /* Align logos to the left */
             align-items: center; /* Center logos vertically */
-            margin: 0 10px; /* Ensure margin on the left */
-            height: 100px; /* Set a fixed height for the logo container */
+            margin: 10px 0; /* Add margin on the top */
         }
         .logo-container img {
-            max-height: 100%; /* Set the maximum height of the logo */
+            max-height: 100px; /* Set the maximum height of the logo */
             width: auto; /* Allow the width to adjust accordingly */
             margin: 0 10px; /* Adjust margin on both sides */
         }
     </style>
 """, unsafe_allow_html=True)
+
+# Streamlit app
+st.title('UPC Concatenation App')
+
+# Logo container for "redpepperdigital"
+st.markdown('<div class="logo-container">'
+            '<img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo">'
+            '</div>', unsafe_allow_html=True)
 
 # List of logos with their URLs
 logos = {
@@ -45,8 +55,6 @@ logos = {
 
 # Display logos side by side horizontally
 logo_html = '<div class="logo-container">'
-custom_logo_url = 'https://app.redpepperdigital.net/themes/custom/epublications/logo.png'
-logo_html += f'<img src="{custom_logo_url}" alt="Custom Logo">'
 for logo, url in logos.items():
     logo_html += f'<img src="{url}" alt="{logo}">'
 logo_html += '</div>'
@@ -68,9 +76,6 @@ def get_binary_file_downloader_html(file_path, file_label):
         data = f.read()
     b64 = base64.b64encode(data).decode()
     return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_label}">Click here to download {file_label}</a>'
-
-# Streamlit app
-st.title('UPC Concatenation App')
 
 # File upload section with hidden default uploader
 uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)  # Displayed custom uploader
