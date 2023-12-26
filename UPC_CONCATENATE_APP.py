@@ -22,9 +22,9 @@ st.markdown("""
         }
         .logo-container {
             display: flex;
-            justify-content: space-between; /* Place logos at the ends of the container */
+            justify-content: flex-start; /* Align logos to the left */
             align-items: center; /* Center logos vertically */
-            margin: 0 -10px; /* Ensure equal margins on both sides */
+            margin: 0 10px; /* Ensure margin on the left */
             height: 100px; /* Set a fixed height for the logo container */
         }
         .logo-container img {
@@ -41,11 +41,12 @@ logos = {
     'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
     'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
-    'Custom Logo': 'https://app.redpepperdigital.net/themes/custom/epublications/logo.png',  # Additional logo
 }
 
 # Display logos side by side horizontally
 logo_html = '<div class="logo-container">'
+custom_logo_url = 'https://app.redpepperdigital.net/themes/custom/epublications/logo.png'
+logo_html += f'<img src="{custom_logo_url}" alt="Custom Logo">'
 for logo, url in logos.items():
     logo_html += f'<img src="{url}" alt="{logo}">'
 logo_html += '</div>'
