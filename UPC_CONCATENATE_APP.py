@@ -22,7 +22,7 @@ st.markdown("""
         }
         .logo-container {
             display: flex;
-            justify-content: space-evenly; /* Distribute space evenly between logos */
+            justify-content: space-between; /* Place logos at the ends of the container */
             align-items: center; /* Center logos vertically */
             margin: 0 -10px; /* Ensure equal margins on both sides */
             height: 100px; /* Set a fixed height for the logo container */
@@ -41,6 +41,7 @@ logos = {
     'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
     'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
+    'Custom Logo': 'https://app.redpepperdigital.net/themes/custom/epublications/logo.png',  # Additional logo
 }
 
 # Display logos side by side horizontally
