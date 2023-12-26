@@ -13,13 +13,8 @@ import tempfile
 
 class SessionState:
     def __init__(self, **kwargs):
-        self._state = kwargs
-
-    def __getattr__(self, attr):
-        return self._state.get(attr, None)
-
-    def __setattr__(self, attr, value):
-        self._state[attr] = value
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
 # Function to create a download link for a file
 def get_binary_file_downloader_html(file_path, file_label):
