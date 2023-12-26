@@ -53,7 +53,7 @@ st.markdown('<div class="logo-container">'
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
     'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
-    'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons_Market_Logo.png',
+    'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons%20Market_Logo.png',
     'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
 }
 
@@ -85,7 +85,7 @@ def get_binary_file_downloader_html(file_path, file_label):
     return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
 
 # File upload section with hidden default uploader
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)  # Displayed custom uploader
+uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
@@ -97,7 +97,7 @@ file_name = file_name_placeholder.text_input("Enter the desired file name (witho
 
 # Button to start processing
 if st.button("Click to Process Data"):
-    if uploaded_file is not None:
+    if uploaded_file is not None and offer_id_column and barcode_column and file_name:
         try:
             # Load data from Excel
             df = pd.read_excel(uploaded_file)
@@ -125,6 +125,8 @@ if st.button("Click to Process Data"):
                 st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name.strip())), unsafe_allow_html=True)
         except Exception as e:
             st.error("An error occurred: {}".format(str(e)))
+    else:
+        st.warning("Please provide valid input for all fields.")
             
 
 
