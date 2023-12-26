@@ -43,11 +43,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Logo container for "redpepperdigital"
-st.markdown('<div class="logo-container">'
-            '<div class="top-left-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
-            '<div class="top-right-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
-            '</div>', unsafe_allow_html=True)
+# Title for Our Clients
+st.title('Our Clients')
 
 # List of logos with their URLs
 logos = {
@@ -66,23 +63,7 @@ logo_html += '</div>'
 # Render logos using HTML
 st.markdown(logo_html, unsafe_allow_html=True)
 
-# Title
-st.title('UPC Concatenation App')
-
-# Function to clean and preprocess the data
-def preprocess_data(df, offer_id_column, barcode_column):
-    df[offer_id_column] = df[offer_id_column].str.strip()
-    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
-    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
-    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
-    return new_df
-
-# Function to create a download link for a file
-def get_binary_file_downloader_html(file_path, file_label):
-    with open(file_path, "rb") as f:
-        data = f.read()
-    b64 = base64.b64encode(data).decode()
-    return '<a href="data:application/octet-stream;base64,{}" download="{}">Click here to download {}</a>'.format(b64, file_label, file_label)
+# The rest of your code...
 
 # File upload section with hidden default uploader
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
