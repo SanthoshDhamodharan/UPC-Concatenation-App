@@ -43,6 +43,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Logo container for "redpepperdigital"
+st.markdown('<div class="logo-container">'
+            '<div class="top-left-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
+            '<div class="top-right-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
+            '</div>', unsafe_allow_html=True)
+
 # Title for Our Clients
 st.title('Our Clients')
 
