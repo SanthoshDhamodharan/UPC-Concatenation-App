@@ -33,6 +33,7 @@ st.markdown("""
             max-height: 100px; /* Set the maximum height of the logo */
             width: auto; /* Allow the width to adjust accordingly */
             margin: 0 10px; /* Adjust margin on both sides */
+            max-width: 100%; /* Ensure the image does not exceed its original size */
         }
     </style>
 """, unsafe_allow_html=True)
