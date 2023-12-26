@@ -131,8 +131,14 @@ if st.button("Click to Process Data"):
                 # Provide a download link
                 st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.strip())), unsafe_allow_html=True)
 
-            # Reset variables
-            state.download_clicked = False  # Reset the state
+                # Reset variables
+                state.download_clicked = False  # Reset the state
+
+                # Workaround to clear text inputs
+                st.text_input("Hidden Text Input (1)", key="hidden_text_input_1", value="", visible=False)
+                st.text_input("Hidden Text Input (2)", key="hidden_text_input_2", value="", visible=False)
+                st.text_input("Hidden Text Input (3)", key="hidden_text_input_3", value="", visible=False)
+
         except Exception as e:
             st.error("An error occurred: {}".format(str(e)))
     else:
