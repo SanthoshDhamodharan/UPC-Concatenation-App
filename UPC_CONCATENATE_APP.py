@@ -134,7 +134,7 @@ if st.button("Click to Process Data"):
                 # Reset variables
                 state.download_clicked = False  # Reset the state
 
-                # Workaround to clear text inputs
+                # Clear text inputs
                 uploaded_file = None
                 offer_id_column = None
                 barcode_column = None
