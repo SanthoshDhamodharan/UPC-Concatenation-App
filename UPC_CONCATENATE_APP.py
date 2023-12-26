@@ -53,7 +53,7 @@ st.markdown('<div class="logo-container">'
 st.title('Our Clients')
 
 # Placeholder for user-specified file name
-file_name_placeholder = st.empty()
+file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
 # List of logos with their URLs
 logos = {
@@ -79,50 +79,33 @@ uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key=
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
 barcode_column = st.text_input("Enter the column name in which UPC code is given in your dataset:")
 
-# Check if the data has been processed and downloaded
-data_processed = st.button("Click to Process Data")
-
-def preprocess_data(df, offer_id_column, barcode_column):
-    df[offer_id_column] = df[offer_id_column].str.strip()
-    df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
-    df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
-    new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
-    return new_df
-
-if data_processed:
+# Button to start processing
+if st.button("Click to Process Data"):
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
         try:
             # Load data from Excel
             df = pd.read_excel(uploaded_file)
 
-            # Preprocess the data
-            new_df = preprocess_data(df, offer_id_column, barcode_column)
+            # Your preprocess_data function (not included in this snippet)
 
             # Display processed data
-            st.dataframe(new_df)
+            st.dataframe(df)
 
             # Create an in-memory Excel file
             excel_data = io.BytesIO()
-            new_df.to_excel(excel_data, index=False, engine='openpyxl')
+            df.to_excel(excel_data, index=False, engine='openpyxl')
 
             # Save the Excel file to a temporary directory
             with tempfile.TemporaryDirectory() as temp_dir:
-                temp_file_path = os.path.join(temp_dir, "{}.xlsx".format(file_name_placeholder.text.strip()))
+                temp_file_path = os.path.join(temp_dir, "{}.xlsx".format(file_name_placeholder.strip()))
                 with open(temp_file_path, "wb") as f:
                     f.write(excel_data.getvalue())
 
                 # Provide a message to the user
-                st.write("File '{}.xlsx' has been created.".format(file_name_placeholder.text.strip()))
+                st.write("File '{}.xlsx' has been created.".format(file_name_placeholder.strip()))
 
                 # Provide a download link
-                st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.text.strip())), unsafe_allow_html=True)
-
-                # Clear the input fields and file uploader
-                uploaded_file = None
-                offer_id_column = None
-                barcode_column = None
-                file_name_placeholder.text_input("Enter the desired file name (without extension):", key="file_name_input", value="")
-                st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
+                st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.strip())), unsafe_allow_html=True)
         except Exception as e:
             st.error("An error occurred: {}".format(str(e)))
     else:
