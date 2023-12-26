@@ -131,24 +131,19 @@ if st.button("Click to Process Data"):
                 # Provide a download link
                 st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.strip())), unsafe_allow_html=True)
 
-                # Reset variables
-                uploaded_file = None
-                offer_id_column = None
-                barcode_column = None
-                file_name_placeholder = None
-                state.download_clicked = False  # Reset the state
+            # Reset variables
+            state.download_clicked = False  # Reset the state
         except Exception as e:
             st.error("An error occurred: {}".format(str(e)))
     else:
         st.warning("Please provide valid input for all fields.")
-else:
-    if state.download_clicked:
-        # Reset the fields after the download button is clicked
-        uploaded_file = None
-        offer_id_column = None
-        barcode_column = None
-        file_name_placeholder = None
-        state.download_clicked = False  # Reset the state
+
+# Reset the input fields after the download button is clicked
+if state.download_clicked:
+    uploaded_file = None
+    offer_id_column = None
+    barcode_column = None
+    file_name_placeholder = None
             
 
 
