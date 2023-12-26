@@ -25,7 +25,7 @@ st.markdown("""
         }
         .logo-container {
             display: flex;
-            justify-content: flex-start; /* Align logos to the left */
+            justify-content: center; /* Center logos horizontally */
             align-items: center; /* Center logos vertically */
             margin: 10px 0; /* Add margin on the top */
         }
@@ -36,6 +36,14 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+# Streamlit app
+st.title('UPC Concatenation App')
+
+# Logo container for "redpepperdigital"
+st.markdown('<div class="logo-container">'
+            '<img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo">'
+            '</div>', unsafe_allow_html=True)
 
 # List of logos with their URLs
 logos = {
@@ -53,9 +61,6 @@ logo_html += '</div>'
 
 # Render logos using HTML
 st.markdown(logo_html, unsafe_allow_html=True)
-
-# Title
-st.title('UPC Concatenation App')
 
 # Function to clean and preprocess the data
 def preprocess_data(df, offer_id_column, barcode_column):
