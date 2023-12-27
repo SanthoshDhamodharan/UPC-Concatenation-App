@@ -97,9 +97,6 @@ barcode_column = st.text_input("Enter the column name in which UPC code is given
 # Placeholder for user-specified file name
 file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
-# Button to start processing
-state = SessionState(download_clicked=False)
-
 if st.button("Click to Process Data"):
     state.download_clicked = True
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
