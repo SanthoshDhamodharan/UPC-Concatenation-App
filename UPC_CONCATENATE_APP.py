@@ -11,6 +11,9 @@ import io
 import base64
 import tempfile
 
+# Initialize session state
+state = st.session_state
+
 # Function to create a download link for a file
 def get_binary_file_downloader_html(file_path, file_label):
     with open(file_path, "rb") as f:
