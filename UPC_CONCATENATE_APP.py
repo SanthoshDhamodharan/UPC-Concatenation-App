@@ -72,6 +72,9 @@ st.markdown('<div class="logo-container">'
 # Title for Our Clients
 st.title('Our Clients')
 
+# Set the title with reduced font size
+st.markdown("<h1 style='font-size:2em;'>Our Clients</h1>", unsafe_allow_html=True)
+
 # List of logos with their URLs
 logos = {
     'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
