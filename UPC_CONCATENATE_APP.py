@@ -69,11 +69,8 @@ st.markdown('<div class="logo-container">'
             '<div class="top-right-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
             '</div>', unsafe_allow_html=True)
 
-# Title for Our Clients
-st.title('Our Clients')
-
 # Set the title with reduced font size
-st.markdown("<h1 style='font-size:2em;'>Our Clients</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='font-size:1em;'>Our Clients</h1>", unsafe_allow_html=True)
 
 # List of logos with their URLs
 logos = {
