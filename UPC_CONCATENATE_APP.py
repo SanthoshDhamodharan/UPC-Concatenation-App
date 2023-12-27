@@ -11,11 +11,6 @@ import io
 import base64
 import tempfile
 
-class SessionState:
-    def __init__(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
 # Function to create a download link for a file
 def get_binary_file_downloader_html(file_path, file_label):
     with open(file_path, "rb") as f:
@@ -133,15 +128,6 @@ if st.button("Click to Process Data"):
 
                 # Provide a download link
                 st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.strip())), unsafe_allow_html=True)
-
-                # Reset variables
-                state.download_clicked = False  # Reset the state
-
-                # Clear text inputs
-                uploaded_file = None
-                offer_id_column = None
-                barcode_column = None
-                file_name_placeholder = None
 
         except Exception as e:
             st.error("An error occurred: {}".format(str(e)))
