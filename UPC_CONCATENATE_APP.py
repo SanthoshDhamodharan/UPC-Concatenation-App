@@ -89,6 +89,9 @@ logo_html += '</div>'
 # Render logos using HTML
 st.markdown(logo_html, unsafe_allow_html=True)
 
+# Streamlit app
+st.title('UPC Concatenation App')
+
 # File upload section with hidden default uploader
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
 
