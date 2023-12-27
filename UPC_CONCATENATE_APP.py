@@ -92,8 +92,11 @@ st.markdown(logo_html, unsafe_allow_html=True)
 # Streamlit app
 st.title('UPC Concatenation App')
 
+# Set the title with red color and Times Roman font
+st.markdown("<h1 style='color: red; font-family: Times New Roman;'>Upload Excel File</h1>", unsafe_allow_html=True)
+
 # File upload section with hidden default uploader
-uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
+uploaded_file = st.file_uploader("Choose a file", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
 
 # User input for column names
 offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:")
