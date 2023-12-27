@@ -70,7 +70,7 @@ st.markdown('<div class="logo-container">'
             '</div>', unsafe_allow_html=True)
 
 # Set the title with reduced font size
-st.markdown("<h1 style='font-size:1em;'>Our Clients</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='font-size:1.5em;'>Our Clients</h1>", unsafe_allow_html=True)
 
 # List of logos with their URLs
 logos = {
