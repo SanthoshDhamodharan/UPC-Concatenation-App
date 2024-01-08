@@ -23,7 +23,7 @@ def get_binary_file_downloader_html(file_path, file_label):
 
 # Function to clean and preprocess the data
 def preprocess_data(df, offer_id_column, barcode_column):
-    df[offer_id_column] = df[offer_id_column].str.strip()
+    df[offer_id_column] = df[offer_id_column].str.strip().replace('\s+', ' ', regex=True)
     df[barcode_column] = df[barcode_column].apply(lambda x: '{:.0f}'.format(x).zfill(14))
     df_unique = df.drop_duplicates(subset=[offer_id_column, barcode_column])
     new_df = df_unique.groupby(offer_id_column)[barcode_column].apply(lambda x: ','.join(x)).reset_index()
@@ -61,10 +61,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Logo container for "redpepperdigital"
+# Logo container for "digitaledition"
 st.markdown('<div class="logo-container">'
-            '<div class="top-left-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
-            '<div class="top-right-logo"><img src="https://app.redpepperdigital.net/themes/custom/epublications/logo.png" alt="Red Pepper Digital Logo"></div>'
+            '<div class="top-left-logo"><img src="https://www.digitaledition.net/themes/custom/epublications/digicomlogo.png" alt="Digital Edition Logo"></div>'
+            '<div class="top-right-logo"><img src="https://www.digitaledition.net/themes/custom/epublications/digicomlogo.png" alt="Digital Edition Logo"></div>'
             '</div>', unsafe_allow_html=True)
 
 # Set the title with reduced font size
@@ -72,10 +72,10 @@ st.markdown("<h1 style='font-size:1.5em;'>Our Clients</h1>", unsafe_allow_html=T
 
 # List of logos with their URLs
 logos = {
-    'United Supermarkets': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/United_Supermarkets_Logo.png',
-    'MarketStreet': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/MarketStreet_Logo.png',
-    'Albertsons Market': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Albertsons_Market_Logo.png',
-    'Amigos': 'https://raw.github.com/SanthoshDhamodharan/UPC-Concatenation-App/main/Amigos_Logo.png',
+    'United Supermarkets': 'https://www.unitedsupermarkets.com/Themes/United5/Content/Images/Default-Logo.png',
+    'MarketStreet': 'https://www.marketstreetunited.com/Themes/MarketStreetUnited5/Content/Images/Default-Logo.png',
+    'Albertsons Market': 'https://www.albertsonsmarket.com/Themes/AlbertsonsMarket5/Content/Images/Default-Logo.png',
+    'Amigos': 'https://www.amigosunited.com/Themes/Amigos5/Content/Images/Default-Logo.png',
 }
 
 # Display logos side by side horizontally
