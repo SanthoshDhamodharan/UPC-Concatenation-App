@@ -129,10 +129,11 @@ if st.button("Click to Process Data"):
                 # Provide a download link
                 st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.strip())), unsafe_allow_html=True)
 
+                # Copyright statement at the lower bottom with center alignment
+                st.markdown("<br><br><hr style='margin-top: auto;'><p style='text-align:center; font-size:0.8em;'>© 2024 VMG Digital. All rights reserved.</p>", unsafe_allow_html=True)
+
         except Exception as e:
-            st.error("An error occurred: {}".format(str(e)))
-    else:
-        st.warning("Please provide valid input for all fields.")
+            st.warning("Please provide valid input for all fields.")
             
 
 
