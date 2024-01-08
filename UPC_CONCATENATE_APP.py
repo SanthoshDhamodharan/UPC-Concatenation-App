@@ -130,8 +130,7 @@ if st.button("Click to Process Data"):
                 st.markdown(get_binary_file_downloader_html(temp_file_path, "{}.xlsx".format(file_name_placeholder.strip())), unsafe_allow_html=True)
 
                 # Copyright statement at the lower bottom with center alignment
-                footer_html = "<div style='text-align:center; font-size:0.8em;'>© 2024 VMG Digital. All rights reserved.</div>"
-                st.footer(footer_html)
+                st.markdown("<br><br><br><br><br><br><hr><p style='text-align:center; font-size:0.8em;'>© 2024 VMG Digital. All rights reserved.</p>", unsafe_allow_html=True)
 
         except Exception as e:
             st.warning("Please provide valid input for all fields.")
