@@ -133,7 +133,8 @@ if st.button("Click to Process Data"):
             st.warning("Please provide valid input for all fields.")
 
 # Copyright statement at the lower bottom with center alignment
-st.markdown("<br><br><br><br><br><br><hr><p style='text-align:center; font-size:0.8em;'>© 2024 VMG Digital. All rights reserved.</p>", unsafe_allow_html=True)
+st.markdown("<div style='position: fixed; bottom: 0; width: 100%; text-align: center;'>"
+            "<hr><p style='font-size: 0.8em;'><strong>© 2024 Redpepper Digital. All rights reserved.</strong></p></div>", unsafe_allow_html=True)
 
 # In[ ]:
 
