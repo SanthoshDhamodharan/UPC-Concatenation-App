@@ -58,6 +58,14 @@ st.markdown("""
         .top-right-logo {
             order: 2; /* Order the logo to be the second in the container (top-right corner) */
         }
+        /* Style for the green button */
+        .green-button {
+            background-color: #4CAF50; /* Green color */
+            color: white; /* White text color */
+            padding: 10px 20px; /* Padding for the button */
+            font-size: 16px; /* Font size for the button text */
+            cursor: pointer; /* Cursor style */
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -100,7 +108,7 @@ barcode_column = st.text_input("Enter the column name in which UPC code is given
 # Placeholder for user-specified file name
 file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
-if st.button("Click to Process Data"):
+if st.button("Click to Process Data", key="process_button", class="green-button"):
     state.download_clicked = True
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
         try:
