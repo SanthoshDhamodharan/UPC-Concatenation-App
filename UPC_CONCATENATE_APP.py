@@ -108,7 +108,7 @@ barcode_column = st.text_input("Enter the column name in which UPC code is given
 # Placeholder for user-specified file name
 file_name_placeholder = st.text_input("Enter the desired file name (without extension):", key="file_name_input")
 
-if st.button("Click to Process Data", key="process_button", class="green-button"):
+if st.button("Click to Process Data", key="process_button", style={"background-color": "#4CAF50", "color": "white", "padding": "10px 20px", "font-size": "16px", "cursor": "pointer"}):
     state.download_clicked = True
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
         try:
