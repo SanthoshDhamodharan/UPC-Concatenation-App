@@ -101,9 +101,11 @@ st.title('UPC Concatenation App')
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key="fileuploader", accept_multiple_files=False)
 
 # User input for column names
-offer_id_column = st.text_input("Enter the column name in which title is given in your dataset:", key="offer_id_column")
+st.markdown("<div style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the column name in which title is given in your dataset:</b></div>", unsafe_allow_html=True)
+offer_id_column = st.text_input("", key="offer_id_column")
 
-barcode_column = st.text_input("Enter the column name in which UPC code is given in your dataset:", key="barcode_column")
+st.markdown("<div style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the column name in which UPC code is given in your dataset:</b></div>", unsafe_allow_html=True)
+barcode_column = st.text_input("", key="barcode_column")
 
 # Placeholder for user-specified file name
 st.markdown("<div style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the desired file name (without extension):</b></div>", unsafe_allow_html=True)
