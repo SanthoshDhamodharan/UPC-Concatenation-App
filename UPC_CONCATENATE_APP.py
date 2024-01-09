@@ -111,19 +111,6 @@ barcode_column = st.text_input("", key="barcode_column")
 st.markdown("<div style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the desired file name (without extension):</b></div>", unsafe_allow_html=True)
 file_name_placeholder = st.text_input("", key="file_name_input")
 
-# Clear Inputs button
-if st.button("Clear Inputs"):
-    # Create an empty form to trigger the clear action
-    with st.form("clear_form"):
-        # Nothing needs to be done here, just submit the form
-        form_submit_button = st.form_submit_button(label="Submit")
-
-    # Clear the user inputs using st.session_state when the form is submitted
-    if form_submit_button:
-        st.session_state["offer_id_column"] = ""
-        st.session_state["barcode_column"] = ""
-        st.session_state["file_name_input"] = ""
-
 if st.button("Click to Process Data"):
     state.download_clicked = True
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
