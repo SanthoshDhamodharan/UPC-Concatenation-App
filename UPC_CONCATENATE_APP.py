@@ -58,6 +58,13 @@ st.markdown("""
         .top-right-logo {
             order: 2; /* Order the logo to be the second in the container (top-right corner) */
         }
+        div.stButton > button {
+            background-color: #4CAF50 !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
