@@ -113,10 +113,10 @@ file_name_placeholder = st.text_input("", key="file_name_input")
 
 # Clear Inputs button
 if st.button("Clear Inputs"):
-    # Clear the user inputs
-    st.text_input("", key="offer_id_column")
-    st.text_input("", key="barcode_column")
-    st.text_input("", key="file_name_input")
+    # Clear the user inputs using st.session_state
+    st.session_state.offer_id_column = ""
+    st.session_state.barcode_column = ""
+    st.session_state.file_name_input = ""
 
 if st.button("Click to Process Data"):
     state.download_clicked = True
