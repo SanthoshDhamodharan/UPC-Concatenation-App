@@ -111,6 +111,13 @@ barcode_column = st.text_input("", key="barcode_column")
 st.markdown("<div style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the desired file name (without extension):</b></div>", unsafe_allow_html=True)
 file_name_placeholder = st.text_input("", key="file_name_input")
 
+# Clear Inputs button
+if st.button("Clear Inputs"):
+    # Clear the user inputs
+    st.session_state.offer_id_column = ""
+    st.session_state.barcode_column = ""
+    st.session_state.file_name_input = ""
+
 if st.button("Click to Process Data"):
     state.download_clicked = True
     if uploaded_file is not None and offer_id_column and barcode_column and file_name_placeholder:
