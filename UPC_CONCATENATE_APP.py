@@ -113,10 +113,16 @@ file_name_placeholder = st.text_input("", key="file_name_input")
 
 # Clear Inputs button
 if st.button("Clear Inputs"):
-    # Clear the user inputs using st.session_state
-    st.session_state.pop("offer_id_column", None)
-    st.session_state.pop("barcode_column", None)
-    st.session_state.pop("file_name_input", None)
+    # Create an empty form to trigger the clear action
+    with st.form("clear_form"):
+        # Nothing needs to be done here, just submit the form
+        form_submit_button = st.form_submit_button(label="Submit")
+
+    # Clear the user inputs using st.session_state when the form is submitted
+    if form_submit_button:
+        st.session_state["offer_id_column"] = ""
+        st.session_state["barcode_column"] = ""
+        st.session_state["file_name_input"] = ""
 
 if st.button("Click to Process Data"):
     state.download_clicked = True
