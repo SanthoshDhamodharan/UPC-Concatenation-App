@@ -102,13 +102,13 @@ uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx", "xls"], key=
 
 # User input for column names
 st.markdown("<p style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the column name in which title is given in your dataset:</b></p>", unsafe_allow_html=True)
-offer_id_column = st.text_input("")
+offer_id_column = st.text_input("Offer ID Column", key="offer_id_column")
 
 st.markdown("<p style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the column name in which UPC code is given in your dataset:</b></p>", unsafe_allow_html=True)
-barcode_column = st.text_input("")
+barcode_column = st.text_input("Barcode Column", key="barcode_column")
 
 st.markdown("<p style='font-family: Times New Roman, sans-serif; font-size: 16px;'><b>Enter the desired file name (without extension):</b></p>", key="file_name_input", unsafe_allow_html=True)
-file_name_placeholder = st.text_input("")
+file_name_placeholder = st.text_input("File Name", key="file_name_input")
 
 if st.button("Click to Process Data"):
     state.download_clicked = True
